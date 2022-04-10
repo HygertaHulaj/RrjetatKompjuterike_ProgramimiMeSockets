@@ -14,14 +14,22 @@ namespace UDP
 {
     public partial class ClientForm : Form
     {
+        UdpClient client;
+        IPEndPoint endPoint;
 
-           UdpClient client;
-        	IPEndPoint endPoint;
-
-
-                public ClientForm()
+        public ClientForm()
         {
             InitializeComponent();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            // Send Message to Server 
+
+            int serverPort = int.Parse(txtServerPort.Text);
+            int clientPort = int.Parse(txtClientPort.Text);
+            string hostName = txtHostName.Text;
+
         }
     }
 }
