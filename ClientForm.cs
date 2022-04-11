@@ -30,13 +30,13 @@ namespace UDP
             int clientPort = int.Parse(txtClientPort.Text);
             string hostName = txtHostName.Text;
 
-            client = new UdpClient(clientPort);
+	client = new UdpClient(clientPort);
 
-            // portnumber.hostname.msg
-            string msg = clientPort + "." + hostName + "." +txtMsg.Text;
-            Byte[] buffer = Encoding.Unicode.GetBytes(msg);
-
-            // Send Msg
+	// portnumber.hostname.msg
+	string msg = clientPort + "." +hostName + "." + txtMsg.Text;
+	Byte[] buffer = Encoding.Unicode.GetBytes(msg);
+	
+	// Send Msg
 
             client.Send(buffer, buffer.Length, hostName, serverPort);
 
@@ -47,10 +47,7 @@ namespace UDP
 
             msg = Encoding.Unicode.GetString(buffer);
 
-            txtLog.AppendText("Server Said: " + msg + Enviroment.NewLine);
-            WriteLog(msg);
-
-
-        }
+            txtLog.AppendText("Server Said: " + msg +Enviroment.NewLine);           
+            }
     }
 }
