@@ -29,7 +29,16 @@ namespace UDP
             int serverPort = int.Parse(txtServerPort.Text);
             int clientPort = int.Parse(txtClientPort.Text);
             string hostName = txtHostName.Text;
+            client = new UdpClient(clientPort);
+
+	// portnumber.hostname.msg
+	string msg = clientPort + “.” +hostName + “.” + txtMsg.Text;
+	Byte[] buffer = Encoding.Unicode.GetBytes(msg);
+
+
+
 
         }
     }
 }
+
