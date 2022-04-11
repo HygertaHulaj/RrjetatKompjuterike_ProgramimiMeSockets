@@ -23,16 +23,24 @@ namespace UDP
             InitializeComponent();
         }
 
-       private void btnStartServer_Click(object sender, EventArgs e)
+        private void btnStartServer_Click(object sender, EventArgs e)
         {
             server = new UdpClient(int.Parse(txtServerPort.Text));
             endPoint = new IPEndPoint(IPAddress.Any, 0);
 
+            WriteLog("Server Started….");
+
         }
-	
 
-     }
+
+        private void WriteLog(string msg)
+        {
+            MethodInvoker invoker = new MethodInvoker(delegate
+            {
+                txtLog.Text += string.Format("Sever Responed : {0}.{1}", msg, Environment.NewLine);
+            });
+
+            this.BeginInvoke(invoker);
+        }
+    }
 }
-
-
-
