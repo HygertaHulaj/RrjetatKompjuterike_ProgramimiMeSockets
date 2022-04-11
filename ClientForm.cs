@@ -19,8 +19,8 @@ namespace UDP
 
         public ClientForm()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();        }
+
 
         private void btnSend_Click(object sender, EventArgs e)
         {
@@ -49,5 +49,17 @@ namespace UDP
 
             txtLog.AppendText("Server Said: " + msg +Enviroment.NewLine);           
             }
+
+   private void WriteLog(string msg)
+        {
+            MethodInvoker invoker = new MethodInvoker(delegate
+            {
+                txtLog.Text += string.Format("Sever Responed : {0}.{1}", msg, Environment.NewLine);                
+            });
+
+            this.BeginInvoke(invoker);
+        }
+
+	
     }
 }
